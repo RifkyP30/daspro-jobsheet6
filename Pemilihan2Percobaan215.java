@@ -3,7 +3,7 @@ public class Pemilihan2Percobaan215 {
   public static void main(String[] args) {
     Scanner input15 = new Scanner(System.in);
     int pilihan_menu, harga;
-    String member;
+    String member, metodePbyrn;
     double diskon, total_bayar;
 
     System.out.println("-------------------------");
@@ -18,6 +18,8 @@ public class Pemilihan2Percobaan215 {
     input15.nextLine();
     System.out.print("Apakah punya member (y/n) ? = ");
     member = input15.nextLine();
+    System.out.print("Masukkan metode pembayaran = ");
+    metodePbyrn = input15.nextLine();
     System.out.println("--------------------------------------");
 
     if (member.equalsIgnoreCase("y")) { // membandingkan string
@@ -39,9 +41,16 @@ public class Pemilihan2Percobaan215 {
         System.out.println("Masukkan pilihan menu dengan benar");
         return; // menghentikan eksekusi lebih lanjut jika pilihan salah
       }
-      // menghitung total bayar
+      // menghitung total bayar & qris
       total_bayar = harga - (harga * diskon);
-      System.out.println("Total bayar setelah diskon = " + total_bayar);
+      if (metodePbyrn.equalsIgnoreCase("qris")) {
+        System.out.println("Total bayar setelah diskon = " + total_bayar);
+        total_bayar -= 1000;
+        System.out.println("Total bayar setelah potongan = " + total_bayar);
+      }
+      else {
+        System.out.println("Total bayar setelah diskon = " + total_bayar);
+      }
     }
     else if (member.equalsIgnoreCase("n")) {
       if (pilihan_menu == 1) {
@@ -60,8 +69,15 @@ public class Pemilihan2Percobaan215 {
         System.out.println("Masukkan pilihan menu dengan benar");
         return;
       }
-      // menghitung total bayar
-      System.out.println("Total bayar = " + harga);
+      // menghitung total bayar & qris
+      if (metodePbyrn.equalsIgnoreCase("qris")) {
+        System.out.println("Total bayar = " + harga);
+        harga -= 1000;
+        System.out.println("Total bayar setelah potongan = " + harga);
+      }
+      else {
+        System.out.println("Total bayar = " + harga);
+      }
     }
     else {
       System.out.println("Member tidak valid");
